@@ -4,55 +4,51 @@
       "id": 1,
       "name": "골드망고 스무디",
       "price": "4000",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
+      "image": "https://gdimg.gmarket.co.kr/1803923937/still/600?ver=1589438675"
     },
     {
       "id": 2,
       "name": "코코넛 커피 스무디",
       "price": "3000",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
+      "image": "https://gdimg.gmarket.co.kr/1803924554/still/400?ver=1589438696"
     },
     {
       "id": 3,
       "name": "망고 코코넛 주스",
       "price": "3000",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
-    },
+      "image": "https://gdimg.gmarket.co.kr/1803924299/still/400?ver=1589438742"},
     {
       "id": 4,
       "name": "망고 하비스 커스티",
       "price": "3000",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
-    },
+      "image": "http://coffeenie.co.kr/uploads/product/20201224413079.png"},
     {
       "id": 5,
       "name": "딸리 쿠키 프라페",
       "price": "5000",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
+      "image": "http://coffeenie.co.kr/uploads/product/20201224413079.png"
     },
     {
       "id": 6,
       "name": "흑당 버블티",
       "price": "4500",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
-    },
+      "image": "https://gdimg.gmarket.co.kr/1608076826/still/600?ver=1557904340"},
     {
       "id": 7,
       "name": "흑당라떼",
       "price": "3000",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
-    },
+      "image": "https://gdimg.gmarket.co.kr/1426110665/still/600?ver=1528185734"},
     {
       "id": 8,
       "name": "아메리카노",
       "price": "1900",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
+      "image": "https://cdn.shopify.com/s/files/1/0273/4535/4826/products/coldbrew_69e25680-9a16-41ed-ad47-e42d7b201b6a.jpg?v=1587042356"
     },
     {
       "id": 9,
       "name": "카페라떼",
       "price": "2900",
-      "image": "https://media.istockphoto.com/id/1512661834/ko/%EC%82%AC%EC%A7%84/%ED%85%8C%EC%9D%B4%EB%B8%94%EC%97%90-%EC%BB%A4%ED%94%BC-%ED%95%9C-%EC%9E%94.jpg?s=1024x1024&w=is&k=20&c=XdA0rzA6BAVIsDLmCdXA0JDQaZ8-xyGpSVdaTo-Ki1I="
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdL8Vhui61tOzSSvstAikcH3ATqc99oBdAOQ&usqp=CAU"
     }
   ]
 }
