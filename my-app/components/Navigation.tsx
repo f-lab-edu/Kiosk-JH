@@ -1,20 +1,25 @@
 import React from 'react';
 
-function Navigation() {
+const Navigation: React.FC = () => {
   const buttonStyle = {
-    marginTop: '82px',
-    marginLeft: '37px',
-    width: '120px',    // 버튼의 너비 설정
-    height: '40px',    // 버튼의 높이 설정
-    fontSize: '14px',  // 버튼의 폰트 크기 설정
+    marginTop: '74px',
+    marginLeft: '5px',
+    width: '120px',
+    height: '40px',
+    fontFamily: 'Inter',
+    fontSize: '14px',
+    fontStyle: 'normal',
     fontWeigth: '500px',
-    fontHeight: '24px',
-    // 추가적인 스타일 속성들...
+    lineHeight: '24px',
+    fontColor: '#000',
+    backgroundColor: '#FFF1F2',
   };
 
   return (
-    <div>
+    <div className='gird gap-x-15 grid-cols-3'>
       <button style={buttonStyle}>시즌 메뉴</button>
+      <button style={buttonStyle}>커피</button>
+      <button style={buttonStyle}>디저트</button>
     </div>
   );
 }
