@@ -1,5 +1,6 @@
 import productList from "./productList.json";
-import {useState} from "react";
+import React, { useState } from "react";
+import Navigation from './components/Navigation.tsx';
 
 export default function Home() {
   console.log(productList)
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <>
     <div className="w-[400px] h-[800px] bg-[#FFE4E6] rounded-[0px] absolute mx-auto">
-
+    <Navigation/>
     </div>
     </>
   )

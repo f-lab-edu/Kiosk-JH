@@ -16,7 +16,7 @@ const Navigation: React.FC = () => {
   };
 
   return (
-    <div className='gird gap-x-15 grid-cols-3'>
+    <div className='grid gap-x-4 grid-cols-3'>
       <button style={buttonStyle}>시즌 메뉴</button>
       <button style={buttonStyle}>커피</button>
       <button style={buttonStyle}>디저트</button>
