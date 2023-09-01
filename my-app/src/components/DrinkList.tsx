@@ -1,4 +1,3 @@
-import productList from "../pages/productList.json"
 import React from 'react';
 import { Product } from '@/types/product';
 
@@ -12,7 +11,7 @@ const DrinkList = ({ products }: DrinkListProps) => {
       {products.map(product => (<>
         <img src={product.image} alt={product.name} />
       <p>{product.name}</p>
-      <p>{product.price}</p></>))}
+      <p>{product.price}원</p></>))}
     </div>
   );
 };

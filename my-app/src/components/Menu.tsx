@@ -1,7 +1,8 @@
 import DrinkList from './DrinkList';
 import React from 'react';
+import productList from '@/pages/productList.json'
 
-const Menu : React.FC= () => {
+const MenuButton = () => {
   const buttonStyle = {
     width: '110px',
     height: '110px',
@@ -10,8 +11,10 @@ const Menu : React.FC= () => {
 
   return (
     <>
-    <div className='gird gap-x-23 gap-y-59 grid-cols-3'>
-    
+    <div className='grid gap-x-23 gap-y-59 grid-cols-3'>
+    <button style={buttonStyle}>
+
+    </button>
     </div>
     </>
   )
