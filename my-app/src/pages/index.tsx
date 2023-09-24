@@ -1,8 +1,15 @@
 import React from "react";
 import { InputWithButton } from '@/components/Search';
-import { PlusIcon } from '@/components/Plus';
+import { DialogDemo } from '@/components/DialogDemo';
+import { useState } from 'react';
 
 export default function Home() {
+  const [artists, setArtists] = useState<{ id: number; name: string; }[]>([]);
+
+  const handleAddTodo = (newTodo: { id: number; name: string; }) => {
+    setArtists([...artists, newTodo]);
+  };
+
   return (
     <>
     <div className="max-w-[430px] p-4 h-screen bg-white relative mx-auto">
@@ -11,8 +18,13 @@ export default function Home() {
         <InputWithButton />
       </div>
       <div className="absolute bottom-4 right-4 h-10 w-10 bg-slate-800 rounded-full flex items-center justify-center">
-        <PlusIcon />
+        <DialogDemo onAddTodo={handleAddTodo} artists={artists} setArtists={setArtists} />
       </div>
+      <ul>
+          {artists.map(artist => (
+            <li key={artist.id}>{artist.name}</li>
+          ))}
+        </ul>
     </div>
     </>
   )
