@@ -9,10 +9,12 @@ import PencilIcon from "./Pencil";
 import TrashIcon from "./TrashIcon";
 import DatIcon from "./DatIcon";
 import { TodoEditModal } from "./TodoEditModal";
+import { TodoDelete } from "./TodoDelete";
 import { useState } from "react";
 
-export function MenuButton() {
+export function MenuButton({ todos }: any) {
   const [editOpen, setEditOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   return (
     <>
@@ -25,17 +27,24 @@ export function MenuButton() {
         <DropdownMenuContent className="w-24">
           <DropdownMenuItem>
             <TrashIcon />
-            <span>Delete</span>
+            <span className="button" onClick={() => setDeleteOpen(true)}>
+              Delete
+            </span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <PencilIcon />
-            <span className="btn" onClick={() => setEditOpen(true)}>
+            <span className="button" onClick={() => setEditOpen(true)}>
               Edit
             </span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <TodoEditModal open={editOpen} onOpenChange={setEditOpen} />
+      <TodoDelete open={deleteOpen} onOpenChange={setDeleteOpen} />
+      <TodoEditModal
+        open={editOpen}
+        onOpenChange={setEditOpen}
+        defaultValue={todos}
+      />
     </>
   );
 }

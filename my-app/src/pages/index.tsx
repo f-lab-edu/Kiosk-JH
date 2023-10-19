@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { InputWithButton } from "@/components/Search";
 import { TodoCreate } from "@/components/TodoCreate";
 import { useState } from "react";
 import { MenuButton } from "@/components/MenuButton";
-
-export type HomeType = {
-  artist: string;
-};
+// import { CheckboxDemo } from "@/components/Checkbox";
 
 export default function Home() {
+  const [selectedTodo, setSelectedTodo] = useState(null);
   const [todos, setTodos] = useState<
     { id: number; name: string; checked: boolean }[]
   >([]);
@@ -40,18 +38,18 @@ export default function Home() {
           />
         </div>
         <ul>
-          {todos.map((artist) => (
+          {todos.map((todo) => (
             <li
-              key={artist.id}
+              key={todo.id}
               className="flex items-center justify-between gap-4"
             >
               <div className="ml-5 flex-1">
                 <input
                   type="checkbox"
-                  checked={artist.checked}
-                  onChange={() => handleCheckboxChange(artist.id)}
+                  checked={todo.checked}
+                  onChange={() => handleCheckboxChange(todo.id)}
                 />
-                {artist.name}
+                {todo.name}
               </div>
               <MenuButton />
             </li>
