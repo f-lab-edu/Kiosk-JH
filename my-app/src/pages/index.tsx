@@ -3,10 +3,10 @@ import { InputWithButton } from "@/components/Search";
 import { TodoCreate } from "@/components/TodoCreate";
 import { useState } from "react";
 import { MenuButton } from "@/components/MenuButton";
-// import { CheckboxDemo } from "@/components/Checkbox";
+import { CheckboxDemo } from "@/components/Checkbox";
 
 export default function Home() {
-  const [selectedTodo, setSelectedTodo] = useState(null);
+  // const [selectedTodo, setSelectedTodo] = useState(null);
   const [todos, setTodos] = useState<
     { id: number; name: string; checked: boolean }[]
   >([]);
@@ -22,6 +22,10 @@ export default function Home() {
       ),
     );
   };
+
+  // const onChangeSelectedTodo = (todo) => {
+  //   selectedTodo(todo);
+  // };
 
   return (
     <>
@@ -51,7 +55,7 @@ export default function Home() {
                 />
                 {todo.name}
               </div>
-              <MenuButton />
+              <MenuButton todo={todo.name} todos={todos} setTodos={setTodos} />
             </li>
           ))}
         </ul>

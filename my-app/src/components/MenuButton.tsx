@@ -12,7 +12,7 @@ import { TodoEditModal } from "./TodoEditModal";
 import { TodoDelete } from "./TodoDelete";
 import { useState } from "react";
 
-export function MenuButton({ todos }: any) {
+export function MenuButton({ todo, todos, setTodos }: any) {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
 
@@ -44,6 +44,9 @@ export function MenuButton({ todos }: any) {
         open={editOpen}
         onOpenChange={setEditOpen}
         defaultValue={todos}
+        todos={todos}
+        setTodos={setTodos}
+        todo={todo.name}
       />
     </>
   );
