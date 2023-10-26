@@ -6,26 +6,28 @@ import { MenuButton } from "@/components/MenuButton";
 import { CheckboxDemo } from "@/components/Checkbox";
 
 export default function Home() {
-  // const [selectedTodo, setSelectedTodo] = useState(null);
   const [todos, setTodos] = useState<
     { id: number; name: string; checked: boolean }[]
   >([]);
 
+  const TodoReducer = ({ state, action }: any) => {
+    switch (action.type) {
+      case "TODO_CREATE":
+        return todos.concat(action.todo);
+      case "TODO_DELETE":
+        return todos.filter((todo) => todo.id !== action.id);
+      case "TODO_EDIT":
+        return todos.map((todo) =>
+          todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
+        );
+      default:
+        return state;
+    }
+  };
+
   const handleAddTodo = (newTodo: { id: number; name: string }) => {
     setTodos([...todos, { ...newTodo, checked: false }]);
   };
-
-  const handleCheckboxChange = (id: number) => {
-    setTodos((prevArtists) =>
-      prevArtists.map((artist) =>
-        artist.id === id ? { ...artist, checked: !artist.checked } : artist,
-      ),
-    );
-  };
-
-  // const onChangeSelectedTodo = (todo) => {
-  //   selectedTodo(todo);
-  // };
 
   return (
     <>
@@ -48,14 +50,17 @@ export default function Home() {
               className="flex items-center justify-between gap-4"
             >
               <div className="ml-5 flex-1">
-                <input
-                  type="checkbox"
-                  checked={todo.checked}
-                  onChange={() => handleCheckboxChange(todo.id)}
-                />
-                {todo.name}
+                <div className="flex items-center space-x-2">
+                  <CheckboxDemo />
+                  <span>{todo.name}</span>
+                </div>
               </div>
-              <MenuButton todo={todo.name} todos={todos} setTodos={setTodos} />
+              <MenuButton
+                checked={Boolean}
+                todo={todo}
+                todos={todos}
+                setTodos={setTodos}
+              />
             </li>
           ))}
         </ul>

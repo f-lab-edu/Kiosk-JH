@@ -20,6 +20,7 @@ interface TodoCreateProps {
   onAddTodo: (todo: Todo) => void;
   artists: Todo[];
   setArtists: React.Dispatch<React.SetStateAction<Todo[]>>;
+  checked: boolean;
 }
 
 let nextId = 0;
@@ -28,6 +29,7 @@ export function TodoCreate({
   onAddTodo,
   artists,
   setArtists,
+  checked,
 }: TodoCreateProps) {
   const [name, setName] = useState("");
   const handleAddTodo = () => {

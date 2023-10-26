@@ -43,10 +43,11 @@ export function MenuButton({ todo, todos, setTodos }: any) {
       <TodoEditModal
         open={editOpen}
         onOpenChange={setEditOpen}
-        defaultValue={todos}
+        defaultValue={todo.name}
         todos={todos}
         setTodos={setTodos}
-        todo={todo.name}
+        todo={todo}
+        checked
       />
     </>
   );
