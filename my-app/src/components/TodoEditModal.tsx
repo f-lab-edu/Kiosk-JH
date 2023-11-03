@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -17,25 +17,45 @@ interface TodoEditModalProps {
   setTodos: (todos: { id: number; name: string; checked: boolean }[]) => void;
   todo: any;
   checked: boolean;
+  onToggle: any;
+  onChangeSelectedTodo: any;
+  selectedTodo: any;
 }
 
 export function TodoEditModal({
   open,
   onOpenChange,
-  defaultValue,
   todos,
   setTodos,
   todo,
-  checked,
+  onToggle,
+  onChangeSelectedTodo,
+  selectedTodo,
 }: TodoEditModalProps) {
-  const [editTodo, setEditTodo] = useState("");
+  const [editTodo, setEditTodo] = useState(todo.name);
+  const [editingTask, setEditingTask] = useState(null);
+  const [editTaskText, setEditTaskText] = useState("");
+  const { id, name, checked } = todo;
   const todoValue = todos.map((item) => {
     if (item.id === todo.id) {
       return todo.name;
     }
-    // return item.name;
   });
 
+  const handleSave = () => {
+    const updatedTodos = todos.map((item) =>
+      item.id === todo.id ? { ...item, name: editTodo } : item,
+    );
+
+    setTodos(updatedTodos);
+    onOpenChange(false);
+  };
+
+  useEffect(() => {
+    if (selectedTodo) {
+      setEditTaskText(selectedTodo.text);
+    }
+  }, []);
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
@@ -44,17 +64,21 @@ export function TodoEditModal({
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="col-start-1 col-end-7 grid">
+            {/* {todos.map((todo) => ( */}
             <Input
               type="text"
-              placeholder={todoValue}
               value={editTodo}
+              placeholder={todoValue}
               onChange={(e) => setEditTodo(e.target.value)}
               className="col-span-3"
             />
+            {/* ))} */}
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit">Create</Button>
+          <Button type="submit" onClick={handleSave}>
+            Create
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

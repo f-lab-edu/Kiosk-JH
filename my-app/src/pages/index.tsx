@@ -1,7 +1,6 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { InputWithButton } from "@/components/Search";
 import { TodoCreate } from "@/components/TodoCreate";
-import { useState } from "react";
 import { MenuButton } from "@/components/MenuButton";
 import { CheckboxDemo } from "@/components/Checkbox";
 
@@ -10,23 +9,46 @@ export default function Home() {
     { id: number; name: string; checked: boolean }[]
   >([]);
 
-  const TodoReducer = ({ state, action }: any) => {
-    switch (action.type) {
-      case "TODO_CREATE":
-        return todos.concat(action.todo);
-      case "TODO_DELETE":
-        return todos.filter((todo) => todo.id !== action.id);
-      case "TODO_EDIT":
-        return todos.map((todo) =>
-          todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
-        );
-      default:
-        return state;
-    }
-  };
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
-  const handleAddTodo = (newTodo: { id: number; name: string }) => {
+  const onRemove = useCallback(
+    (id) => {
+      setTodos(todos.filter((todo) => todo.id !== id));
+    },
+    [todos],
+  );
+
+  const onToggle = useCallback(
+    (id: number) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+        ),
+      );
+    },
+    [todos],
+  );
+  // const TodoReducer = ({ todos, action }: any) => {
+  //   switch (action.type) {
+  //     case "TODO_CREATE":
+  //       return todos.concat(action.todo);
+  //     case "TODO_DELETE":
+  //       return todos.filter((todo) => todo.id !== action.id);
+  //     case "TODO_EDIT":
+  //       return todos.map((todo) =>
+  //         todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
+  //       );
+  //     default:
+  //       return todos;
+  //   }
+  // };
+
+  function handleAddTodo(newTodo: { id: number; name: string }) {
     setTodos([...todos, { ...newTodo, checked: false }]);
+  }
+
+  const onChangeSelectedTodo = (todo) => {
+    setSelectedTodo(todo);
   };
 
   return (
@@ -39,8 +61,8 @@ export default function Home() {
         <div className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800">
           <TodoCreate
             onAddTodo={handleAddTodo}
-            artists={todos}
-            setArtists={setTodos}
+            value={todos}
+            setValue={setTodos}
           />
         </div>
         <ul>
@@ -60,6 +82,10 @@ export default function Home() {
                 todo={todo}
                 todos={todos}
                 setTodos={setTodos}
+                onToggle={onToggle}
+                onChangeSelectedTodo={onChangeSelectedTodo}
+                selectedTodo={selectedTodo}
+                onRemove={onRemove}
               />
             </li>
           ))}

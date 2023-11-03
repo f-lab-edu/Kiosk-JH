@@ -12,7 +12,15 @@ import { TodoEditModal } from "./TodoEditModal";
 import { TodoDelete } from "./TodoDelete";
 import { useState } from "react";
 
-export function MenuButton({ todo, todos, setTodos }: any) {
+export function MenuButton({
+  todo,
+  todos,
+  setTodos,
+  onToggle,
+  onChangeSelectedTodo,
+  selectedTodo,
+  onRemove,
+}: any) {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
 
@@ -25,7 +33,7 @@ export function MenuButton({ todo, todos, setTodos }: any) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-24">
-          <DropdownMenuItem>
+          <DropdownMenuItem className="text-red-600">
             <TrashIcon />
             <span className="button" onClick={() => setDeleteOpen(true)}>
               Delete
@@ -40,15 +48,22 @@ export function MenuButton({ todo, todos, setTodos }: any) {
         </DropdownMenuContent>
       </DropdownMenu>
       <TodoDelete open={deleteOpen} onOpenChange={setDeleteOpen} />
-      <TodoEditModal
-        open={editOpen}
-        onOpenChange={setEditOpen}
-        defaultValue={todo.name}
-        todos={todos}
-        setTodos={setTodos}
-        todo={todo}
-        checked
-      />
+      {todos.map((todo) => (
+        <TodoEditModal
+          open={editOpen}
+          onOpenChange={setEditOpen}
+          defaultValue={todo.name}
+          todos={todos}
+          setTodos={setTodos}
+          todo={todo}
+          key={todo.id}
+          onRemove={onRemove}
+          checked
+          onToggle={onToggle}
+          onChangeSelectedTodo={onChangeSelectedTodo}
+          selectedTodo={selectedTodo}
+        />
+      ))}
     </>
   );
 }
