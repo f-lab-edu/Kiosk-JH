@@ -64,7 +64,6 @@ export function TodoEditModal({
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="col-start-1 col-end-7 grid">
-            {/* {todos.map((todo) => ( */}
             <Input
               type="text"
               value={editTodo}
@@ -72,7 +71,6 @@ export function TodoEditModal({
               onChange={(e) => setEditTodo(e.target.value)}
               className="col-span-3"
             />
-            {/* ))} */}
           </div>
         </div>
         <DialogFooter>

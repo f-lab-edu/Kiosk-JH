@@ -20,6 +20,7 @@ export function MenuButton({
   onChangeSelectedTodo,
   selectedTodo,
   onRemove,
+  index,
 }: any) {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
@@ -33,7 +34,7 @@ export function MenuButton({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-24">
-          <DropdownMenuItem className="text-red-600">
+          <DropdownMenuItem className="text-red-700">
             <TrashIcon />
             <span className="button" onClick={() => setDeleteOpen(true)}>
               Delete
@@ -62,6 +63,7 @@ export function MenuButton({
           onToggle={onToggle}
           onChangeSelectedTodo={onChangeSelectedTodo}
           selectedTodo={selectedTodo}
+          index={index}
         />
       ))}
     </>
