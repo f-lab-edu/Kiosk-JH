@@ -43,10 +43,6 @@ export default function Home() {
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
-  const onRemove = (index: number) => {
-    const newTodos = todos.filter((_, _index: number) => index != _index);
-    setTodos(newTodos);
-  };
   return (
     <>
       <div className="relative mx-auto h-screen max-w-[430px] bg-white p-4">
@@ -64,8 +60,11 @@ export default function Home() {
         <ul>
           {todos.map((todo, index) => (
             <li
-              key={todo.id}
+              todo={todo}
               index={index}
+              // key={todo.id}
+              key={index}
+              setTodos={setTodos}
               className="flex items-center justify-between gap-4"
             >
               <div className="ml-5 flex-1">
@@ -82,7 +81,6 @@ export default function Home() {
                 onToggle={onToggle}
                 onChangeSelectedTodo={onChangeSelectedTodo}
                 selectedTodo={selectedTodo}
-                onRemove={onRemove}
                 index={index}
               />
             </li>
