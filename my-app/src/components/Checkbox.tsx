@@ -1,14 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 
-type CheckboxDemoProps = {
-  children: ReactNode; // children prop 추가
-};
-
-export function CheckboxDemo({ children }: CheckboxDemoProps) {
+export function CheckboxDemo({ checked, onCheckedChange }: any) {
   return (
     <div>
-      <Checkbox />
+      <Checkbox checked={checked} onCheckedChange={onCheckedChange} />
     </div>
   );
 }

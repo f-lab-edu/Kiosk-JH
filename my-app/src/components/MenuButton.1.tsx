@@ -16,10 +16,10 @@ export function MenuButton({
   todo,
   todos,
   setTodos,
-  // onToggle,
-  // onChangeSelectedTodo,
-  // selectedTodo,
-  index, // key,
+  onToggle,
+  onChangeSelectedTodo,
+  selectedTodo,
+  index,
 }: any) {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
@@ -47,7 +47,7 @@ export function MenuButton({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      {todos.map((todo: any) => (
+      {todos.map((todo) => (
         <TodoDelete
           open={deleteOpen}
           onOpenChange={setDeleteOpen}
@@ -56,19 +56,19 @@ export function MenuButton({
           index={index}
         />
       ))}
-      {todos.map((todo: any) => (
+      {todos.map((todo) => (
         <TodoEdit
-          key={todo.id}
           open={editOpen}
           onOpenChange={setEditOpen}
+          defaultValue={todo.name}
           todos={todos}
           setTodos={setTodos}
           todo={todo}
-          // index={index}
-          // checked
-          // onToggle={onToggle}
-          // onChangeSelectedTodo={onChangeSelectedTodo}
-          // selectedTodo={selectedTodo}
+          key={todo.id}
+          checked
+          onToggle={onToggle}
+          onChangeSelectedTodo={onChangeSelectedTodo}
+          selectedTodo={selectedTodo}
         />
       ))}
     </>

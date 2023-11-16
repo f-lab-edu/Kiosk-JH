@@ -19,10 +19,10 @@ interface Todo {
 interface TodoDeleteProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  todo: any;
+  // todo: any;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-  checked: boolean;
+  // checked: boolean;
   index: number;
 }
 
@@ -31,7 +31,7 @@ export function TodoDelete({
   onOpenChange,
   todos,
   setTodos,
-  todo,
+  // todo,
   index,
 }: TodoDeleteProps) {
   // const onRemove = () => {
@@ -46,9 +46,8 @@ export function TodoDelete({
   //   }
   // };
   const onRemove = () => {
-    const newTodos =
-      todos && todos.filter((_, _index: number) => index != _index);
-    setTodos(newTodos || []);
+    const newTodos = todos.filter((_, _index: number) => index != _index);
+    setTodos(newTodos);
   };
 
   return (

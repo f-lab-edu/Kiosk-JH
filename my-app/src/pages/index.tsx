@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { InputWithButton } from "@/components/Search";
 import { TodoCreate } from "@/components/TodoCreate";
-import { MenuButton } from "@/components/MenuButton";
+import { MenuButton } from "@/components/MenuButton.1";
 import { CheckboxDemo } from "@/components/Checkbox";
 
 export default function Home() {
@@ -9,40 +9,20 @@ export default function Home() {
     { id: number; name: string; checked: boolean }[]
   >([]);
 
-  const [selectedTodo, setSelectedTodo] = useState(null);
-
-  const onToggle = useCallback(
-    (id: number) => {
-      setTodos(
-        todos.map((todo) =>
-          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
-        ),
-      );
-    },
-    [todos],
-  );
-  // const TodoReducer = ({ todos, action }: any) => {
-  //   switch (action.type) {
-  //     case "TODO_CREATE":
-  //       return todos.concat(action.todo);
-  //     case "TODO_DELETE":
-  //       return todos.filter((todo) => todo.id !== action.id);
-  //     case "TODO_EDIT":
-  //       return todos.map((todo) =>
-  //         todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
-  //       );
-  //     default:
-  //       return todos;
-  //   }
-  // };
-
   function handleAddTodo(newTodo: { id: number; name: string }) {
     setTodos([...todos, { ...newTodo, checked: false }]);
   }
 
-  const onChangeSelectedTodo = (todo) => {
-    setSelectedTodo(todo);
+  const [checked, setChecked] = useState(false);
+  const handleCheckboxChange = (index: number) => {
+    const updatedTodos = [...todos];
+    updatedTodos[index] = {
+      ...updatedTodos[index],
+      checked: !updatedTodos[index].checked,
+    };
+    setTodos(updatedTodos);
   };
+
   return (
     <>
       <div className="relative mx-auto h-screen max-w-[430px] bg-white p-4">
@@ -62,15 +42,24 @@ export default function Home() {
             <li
               todo={todo}
               index={index}
-              // key={todo.id}
-              key={index}
+              key={todo.id}
               setTodos={setTodos}
               className="flex items-center justify-between gap-4"
             >
               <div className="ml-5 flex-1">
                 <div className="flex items-center space-x-2">
-                  <CheckboxDemo />
-                  <span>{todo.name}</span>
+                  <CheckboxDemo
+                    todo={todo}
+                    checked={todo.checked} // todo.이 필요하네
+                    onCheckedChange={() => handleCheckboxChange(index)}
+                  />
+                  {todo.checked ? ( // 이것도
+                    <span className="text-gray-400/50 line-through">
+                      {todo.name}
+                    </span>
+                  ) : (
+                    <span>{todo.name}</span>
+                  )}
                 </div>
               </div>
               <MenuButton
@@ -78,9 +67,6 @@ export default function Home() {
                 todo={todo}
                 todos={todos}
                 setTodos={setTodos}
-                onToggle={onToggle}
-                onChangeSelectedTodo={onChangeSelectedTodo}
-                selectedTodo={selectedTodo}
                 index={index}
               />
             </li>
