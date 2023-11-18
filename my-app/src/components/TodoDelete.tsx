@@ -9,47 +9,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-
-interface Todo {
-  id: number;
-  name: string;
-  checked: boolean;
-}
+import { Todo } from "@/pages";
 
 interface TodoDeleteProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  // todo: any;
-  todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-  // checked: boolean;
-  index: number;
+  onRemove: () => void;
 }
 
-export function TodoDelete({
-  open,
-  onOpenChange,
-  todos,
-  setTodos,
-  // todo,
-  index,
-}: TodoDeleteProps) {
-  // const onRemove = () => {
-  //   if (todos && todos.filter) {
-  //     let value = todos.filter;
-  //     const newTodos = todos.filter((_, _index: number) => index != _index);
-  //     setTodos(newTodos);
-  //     // 이제 value를 사용할 수 있습니다.
-  //   } else {
-  //     console.log("filter 프로퍼티를 사용할 수 없습니다.");
-  //     // 필터 프로퍼티가 존재하지 않거나 myObject가 정의되지 않았을 때 수행할 작업
-  //   }
-  // };
-  const onRemove = () => {
-    const newTodos = todos.filter((_, _index: number) => index != _index);
-    setTodos(newTodos);
-  };
-
+export function TodoDelete({ open, onOpenChange, onRemove }: TodoDeleteProps) {
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>

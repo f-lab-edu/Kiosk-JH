@@ -11,18 +11,17 @@ import DatIcon from "./DatIcon";
 import { TodoEdit } from "./TodoEdit";
 import { TodoDelete } from "./TodoDelete";
 import { useState } from "react";
+import { Todo } from "@/pages";
 
-export function MenuButton({
-  todo,
-  todos,
-  setTodos,
-  // onToggle,
-  // onChangeSelectedTodo,
-  // selectedTodo,
-  index, // key,
-}: any) {
+interface MenuButtonProps {
+  todo: Todo;
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+}
+
+export function MenuButton({ todo, setTodos }: MenuButtonProps) {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const todoId = todo.id;
 
   return (
     <>
@@ -47,30 +46,25 @@ export function MenuButton({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      {todos.map((todo: any) => (
-        <TodoDelete
-          open={deleteOpen}
-          onOpenChange={setDeleteOpen}
-          todos={todos}
-          setTodos={setTodos}
-          index={index}
-        />
-      ))}
-      {todos.map((todo: any) => (
-        <TodoEdit
-          key={todo.id}
-          open={editOpen}
-          onOpenChange={setEditOpen}
-          todos={todos}
-          setTodos={setTodos}
-          todo={todo}
-          // index={index}
-          // checked
-          // onToggle={onToggle}
-          // onChangeSelectedTodo={onChangeSelectedTodo}
-          // selectedTodo={selectedTodo}
-        />
-      ))}
+      <TodoDelete
+        open={deleteOpen}
+        onOpenChange={setDeleteOpen}
+        onRemove={() => {
+          setTodos((prevTodos) => prevTodos.filter((t) => t.id !== todoId));
+        }}
+      />
+      <TodoEdit
+        open={editOpen}
+        onOpenChange={setEditOpen}
+        onEdit={(newName: string) => {
+          setTodos((prevTodos) =>
+            prevTodos.map((t) =>
+              t.id === todoId ? { ...t, name: newName } : t,
+            ),
+          );
+        }}
+        oldName={todo.name}
+      />
     </>
   );
 }

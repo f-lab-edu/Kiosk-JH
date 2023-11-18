@@ -10,31 +10,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Plus } from "lucide-react";
-
-interface Todo {
-  id: number;
-  name: string;
-}
+import { Todo } from "@/pages";
 
 interface TodoCreateProps {
   onAddTodo: (todo: Todo) => void;
   value: Todo[];
   setValue: React.Dispatch<React.SetStateAction<Todo[]>>;
-  checked: boolean;
 }
 
 let nextId = 0;
 
-export function TodoCreate({
-  onAddTodo,
-  value,
-  setValue,
-  checked,
-}: TodoCreateProps) {
+export function TodoCreate({ onAddTodo, value, setValue }: TodoCreateProps) {
+  const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const handleAddTodo = () => {
     if (name.trim() !== "") {
-      const newTodo = { id: nextId++, name: name };
+      const newTodo = { id: nextId++, name, checked: false };
       setValue([...value, newTodo]);
       onAddTodo(newTodo);
       setName("");
@@ -42,7 +33,7 @@ export function TodoCreate({
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Plus className="h-24 w-24 text-white" />
       </DialogTrigger>
@@ -61,7 +52,13 @@ export function TodoCreate({
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={handleAddTodo}>
+          <Button
+            type="submit"
+            onClick={() => {
+              handleAddTodo();
+              setOpen(false);
+            }}
+          >
             Create
           </Button>
         </DialogFooter>
