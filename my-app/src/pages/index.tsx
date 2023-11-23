@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useDeferredValue } from "react";
 import { Search } from "@/components/Search";
 import { TodoCreate } from "@/components/TodoCreate";
 import { MenuButton } from "@/components/MenuButton";
@@ -27,13 +27,14 @@ export default function Home() {
     setTodos(updatedTodos);
   };
 
-  const [text, setText] = useState("");
+  const [search, setSearch] = useState("");
+  const deferredValue = useDeferredValue(search);
   return (
     <>
       <div className="relative mx-auto h-screen max-w-[430px] bg-white p-4">
         <p className="ml-5 text-2xl font-bold text-slate-800">Todo List</p>
         <div className="mx-5 mt-5">
-          <Search text={text} setText={setText} />
+          <Search search={search} setSearch={setSearch} />
         </div>
         <div className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800">
           <TodoCreate
@@ -44,7 +45,7 @@ export default function Home() {
         </div>
         <ul className="mt-6">
           {todos
-            .filter((t) => t.name.includes(text))
+            .filter((t) => t.name.includes(deferredValue))
             .map((todo, index) => (
               <li
                 key={todo.id}
